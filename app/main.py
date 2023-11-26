@@ -14,8 +14,16 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 MODEL = torch.jit.load(MODEL_PATH, map_location=DEVICE)
 MODEL.eval()
 
-# Function to perform inference
 def predict_array(values):
+    """
+    Perform inference using the pre-trained PyTorch model.
+
+    Parameters:
+    - values (List[float]): List of float values for prediction.
+
+    Returns:
+    - List[float]: List of predicted output values.
+    """
     input_tensor = torch.tensor(values)
     input_batch = input_tensor.unsqueeze(0)
     
@@ -24,9 +32,17 @@ def predict_array(values):
     
     return output.tolist()
 
-# API endpoint to predict over an uploaded list
 @app.post("/predict/")
 async def predict(values: List[float] = Query([])):
+    """
+    API endpoint to predict over an uploaded list.
+
+    Parameters:
+    - values (List[float]): List of float values for prediction.
+
+    Returns:
+    - JSONResponse: JSON response containing the predicted output or an error message.
+    """
     try:
         output = predict_array(values)
         return JSONResponse(content={"output": output}, status_code=200)
