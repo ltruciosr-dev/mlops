@@ -17,6 +17,6 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
-          pytest -v ./tests > report.txt # generate pytest output
+          pytest -v ./tests > report.md # generate pytest output
           # Create CML report
-          cml comment create --pr --publish report.txt
+          # cml comment create --pr --publish report.md
