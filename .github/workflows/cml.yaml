@@ -15,4 +15,4 @@ jobs:
           pip install -r ./.github/workflows/requirements.txt
           pytest -v ./tests > report.md # generate pytest output
           # Create CML report
-          # cml comment create report.md
+          cml comment create report.md
