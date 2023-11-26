@@ -13,7 +13,7 @@ services:
   # Service for running tests using pytest
   tests:
     build: .
-    command: pytest /tests  # Run pytest for the tests in the '/tests' directory
+    command: pytest -v /tests  # Run pytest for the tests in the '/tests' directory
     volumes:
       - ./tests:/tests  # Mount the 'tests' directory from the local machine to '/tests' in the container
       - ./models:/app/models  # Mount the 'models' directory from the local machine to '/app/models' in the container
