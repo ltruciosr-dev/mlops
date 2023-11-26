@@ -30,10 +30,12 @@ def test_uniformity():
     random2 = torch.rand(100)
     random3 = torch.rand(1000)
     random4 = torch.rand(1000)
+    random5 = torch.rand(100000)
     assert torch.equal(MODEL(random1), f(random1))
     assert torch.equal(MODEL(random2), f(random2))
     assert torch.equal(MODEL(random3), f(random3))
     assert torch.equal(MODEL(random4), f(random4))
+    assert torch.equal(MODEL(random5), f(random5))
     
 def test_reproducibility():
     """
