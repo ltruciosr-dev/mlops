@@ -7,13 +7,13 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./models:/models
+      - ./models:/app/models
 
   tests:
     build: .
     command: pytest /tests
     volumes:
       - ./tests:/tests
-      - ./models:/models
+      - ./models:/app/models
     depends_on:
       - app

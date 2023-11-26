@@ -10,7 +10,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - run: |
           pip install -r requirements.txt
-          python train.py  # generate plot.png
+          pytest ./tests > report.md # generate pytest output
           # Create CML report
           cat metrics.txt >> report.md
           echo '![](./plot.png "Confusion Matrix")' >> report.md

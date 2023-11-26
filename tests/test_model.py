@@ -1,6 +1,8 @@
 import torch
+import os
 
-MODEL_PATH = '/models/doubleit_model.pt'
+CURRENT_DIR = os.getcwd()
+MODEL_PATH = f'{CURRENT_DIR}/models/doubleit_model.pt'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 MODEL = torch.jit.load(MODEL_PATH, map_location=DEVICE)
 MODEL.eval()
