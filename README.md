@@ -1,12 +1,16 @@
-# CML basic use case
+# MLOps Lifecycle
 
-This repository contains a sample project using [CML](https://github.com/iterative/cml). When a pull request is made in this repository, the following will occur:
-- GitHub will deploy a runner machine with a specified CML Docker environment
-- The runner will execute a workflow to train a ML model (`python train.py`)
-- A visual CML report about the model performance will be returned as a comment in the pull request
 
-The key file enabling these actions is `.github/workflows/cml.yaml`.
+## Quick Start
 
-## Secrets and environmental variables
-The only environmental variable set in `.github/workflows/cml.yaml` is `GITHUB_TOKEN`, which is configured by default in every GitHub repository. No secrets must be set by the user. 
 
+## 3.1 CI Pipeline Overview
+The approach to building a CI pipeline for a machine-learning project can vary depending on the workflow of each company. In this project, we will create one of the most common workflows to build a CI pipeline:
+
+Data scientists make changes to the code.
+Data scientists push the changes to GitHub or another remote storage.
+Data scientists create a pull request for the changes.
+A CI pipeline is triggered to test the code.
+If changes are approved, they are merged into the main branch.
+
+## 3.2 CD Pipeline Overview
