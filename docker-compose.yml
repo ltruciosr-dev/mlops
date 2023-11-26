@@ -1,19 +1,21 @@
 version: "3"
 
 services:
+  # Service for running the main application
   app:
     build: .
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000  # Run the UVicorn server for the FastAPI app
     ports:
       - "8000:8000"
     volumes:
-      - ./models:/app/models
+      - ./models:/app/models  # Mount the 'models' directory from the local machine to '/app/models' in the container
 
+  # Service for running tests using pytest
   tests:
     build: .
-    command: pytest /tests
+    command: pytest /tests  # Run pytest for the tests in the '/tests' directory
     volumes:
-      - ./tests:/tests
-      - ./models:/app/models
+      - ./tests:/tests  # Mount the 'tests' directory from the local machine to '/tests' in the container
+      - ./models:/app/models  # Mount the 'models' directory from the local machine to '/app/models' in the container
     depends_on:
-      - app
+      - app  # Ensure that the 'app' service is started before running tests
