@@ -8,15 +8,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - uses: iterative/setup-cml@v1
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
       - name: Test Model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pip install -r requirements.txt
+          pip install -r ./.github/workflows/requirements.txt
           pytest -v ./tests > report.md # generate pytest output
           # Create CML report
-          # cml comment create --pr --publish report.md
+          # cml comment create report.md
