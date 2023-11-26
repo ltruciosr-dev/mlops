@@ -2,8 +2,8 @@
 
 provider "google" {
   credentials = file("<path-to-your-service-account-json>")
-  project     = var.project_id
-  region      = var.region
+  project     = "your-gcp-project-id"
+  region      = "us-central1"
 }
 
 module "compute_instance" {
